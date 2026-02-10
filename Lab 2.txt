@@ -1,0 +1,314 @@
+
+#1 --------------------------
+MariaDB [hymes]> select count(*) as RowCount from vets;
++----------+
+| RowCount |
++----------+
+|    58253 |
++----------+
+1 row in set (0.021 sec)
+
+MariaDB [hymes]> 
+
+#2 --------------------------
+MariaDB [hymes]> select count(*) from vets where trim(state) = state;
++----------+
+| count(*) |
++----------+
+|       83 |
++----------+
+1 row in set (0.023 sec)
+This implies there's extra white space.
+#3 ---------------------------
+MariaDB [hymes]> SELECT COUNT(*)
+    -> FROM vets
+    -> WHERE 
+    ->   (lname IS NULL OR TRIM(lname) = '')
+    ->   AND (fname IS NULL OR TRIM(fname) = '')
+    ->   AND (town IS NULL OR TRIM(town) = '')
+    ->   AND (state IS NULL OR TRIM(state) = '');
++----------+
+| COUNT(*) |
++----------+
+|       83 |
++----------+
+1 row in set (0.025 sec)
+
+MariaDB [hymes]> 
+MariaDB [hymes]> DELETE
+    -> FROM vets
+    -> WHERE 
+    ->   (lname IS NULL OR TRIM(lname) = '')
+    ->   AND (fname IS NULL OR TRIM(fname) = '')
+    ->   AND (town IS NULL OR TRIM(town) = '')
+    ->   AND (state IS NULL OR TRIM(state) = '');
+Query OK, 83 rows affected (0.025 sec)
+
+#4 -------------------------------
+MariaDB [hymes]> UPDATE vets
+    -> SET state = TRIM(state);
+Query OK, 58170 rows affected (0.198 sec)
+Rows matched: 58170  Changed: 58170  Warnings: 0
+
+MariaDB [hymes]> 
+
+#5 ------------------------------------
+MariaDB [hymes]> UPDATE vets Set lname = TRIM(lname), fname = TRIM(fname), town = TRIM(town);
+Query OK, 58170 rows affected (0.223 sec)
+Rows matched: 58170  Changed: 58170  Warnings: 0
+
+MariaDB [hymes]> 
+#6 ------------------------------------
+
+MariaDB [hymes]> select count(*) from vets where town LIKE 'LOS%';
++----------+
+| count(*) |
++----------+
+|      586 |
++----------+
+1 row in set (0.020 sec)
+
+#7 ------------------------------------
+MariaDB [hymes]> select count(fname) from vets where town LIKE 'LOS%' AND town = 'LOS ANGELES';
++--------------+
+| count(fname) |
++--------------+
+|          538 |
++--------------+
+1 row in set (0.022 sec)
+
+MariaDB [hymes]> select count(fname) from vets where town LIKE 'LOS%';
++--------------+
+| count(fname) |
++--------------+
+|          586 |
++--------------+
+1 row in set (0.022 sec)
+
+#8 ------------------------------------
+select state, COUNT(*) AS count from vets where town LIKE 'LOS%' AND town <> 'LOS ANGELES' GROUP BY state;
++-------+-------+
+| state | count |
++-------+-------+
+| CA    |    35 |
+| IA    |     2 |
+| KY    |     1 |
+| NM    |     6 |
+| TX    |     3 |
+| WV    |     1 |
++-------+-------+
+6 rows in set (0.022 sec)
+#9 ------------------------------------
+ select fname, lname from vets where state = 'GU' ORDER BY lname;
++---------------------+-------------+
+| fname               | lname       |
++---------------------+-------------+
+| JOSE QUINATA        | AGUON       |
+| FRANCISCO M         | ASANOMA     |
+| DAVID GUERRERO      | BENAVENTE   |
+| MARK FREDERICK      | BIAGINI     |
+| ANTHONY MARTIN M    | BLAS        |
+| JAMES LUJAN         | BLAZ        |
+| JUAN SANTOS         | BORJA       |
+| JOAQUIN PALACIOS    | CABRERA     |
+| DAVID BITANGA       | CAMACHO     |
+| DONALD SUMINGUIT    | CARTER      |
+| JUAN PASCUAL R      | CASTRO      |
+| JUAN DUENAS         | CEPEDA      |
+| EDWARD CRUZ         | CRUZ        |
+| ENRIQUE SALAS       | CRUZ        |
+| JOSEPH AGUIGUI      | CRUZ        |
+| JOSEPH WILLIAM      | CRUZ        |
+| PEDRO AFLAGUE       | CRUZ        |
+| RONALD PEREZ        | CUASITO     |
+| ALLAN JAMES         | DAMIAN      |
+| HERMAN BORJA        | DE LEON     |
+| FREDERICO V         | DELA-CRUZ   |
+| EDWARD REYES        | DIAZ        |
+| ALBERT BARCINAS     | DOYLE       |
+| JOSE BAMBA          | DUENAS      |
+| RUDY EDEJER         | EAY         |
+| JUANITO MAIQUEZ     | ESCANO      |
+| VICENTE T           | ESPINOSA    |
+| FERNANDO BARCINAS   | ESTEVES     |
+| JOSEPH MARTIN       | EUSTAQUIO   |
+| HAROLD JAMES JR     | FINNEY      |
+| BENNY SAN NICOLAS   | FLORES      |
+| DAVID CRUZ          | FLORES      |
+| DAVID JOHN          | FUNES       |
+| DAVID ATOIGUE       | GORTON      |
+| PEDRO ROSARIO       | GUERRERO    |
+| VINCENT FEJA        | GUERRERO    |
+| JOSE BABAUTA        | HERRERA     |
+| JESUS ROSA          | MARIANO     |
+| ROBERT L G          | MENDIOLA    |
+| JESUS QUINENE       | MENO        |
+| TOMAS REYES         | MESA        |
+| VINCENT PINAULA     | MOREHAM     |
+| EMILIO NINAISEN     | NEDEDOG     |
+| GREGORIO L          | PANGELINAN  |
+| PEDRO CABRERA       | PANGELINAN  |
+| HENRY PANGELINAN    | PEREDA      |
+| JOHN ANTHONY        | PEREZ       |
+| VICENTE DUENAS      | PEREZ       |
+| JOHNNY CRUZ         | QUENGA      |
+| JESUS AQUININGO     | QUIDACHAY   |
+| TOMAS GARCIA        | REYES       |
+| EUGENE RAYMOND      | RIPPEL      |
+| THOMAS SALAS        | RIVERA      |
+| LUCAS HERRERA       | RODRIGUEZ   |
+| ANTONIO QUICHOCHO   | SABLAN      |
+| IGNACIO ESPINOSA    | SABLAN      |
+| JOHN TENERIO        | SABLAN      |
+| THOMAS QUICHOCHO    | SABLAN      |
+| RUFO SANTOS         | SAN NICOLAS |
+| VICTOR P            | SAN NICOLAS |
+| GEORGE SANTIAGO     | SANCHEZ     |
+| ENRIQUE ROSARIO     | SANTOS      |
+| ERNEST PABLO        | SANTOS      |
+| JAMES EDWARD ANDER  | SANTOS      |
+| RAFAEL SALAS        | SANTOS      |
+| JOHNNY SALAS        | TAITAGUE    |
+| FRANCIS SAN NICOLAS | TORRE       |
+| PRISHARDO JOSE T    | TORRES      |
+| JAMES EDWARD        | VIOLETT     |
+| RALPHAEL SGAMBELLUR | YOKOI       |
++---------------------+-------------+
+70 rows in set (0.022 sec)
+#10 ------------------------------------
+LOAD DATA LOCAL INFILE '/Users/sid/Downloads/States.csv' INTO TABLE States FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (State, Abbreviation);
+The problem is that there is 51 rows and only 50 states. This is cause by District of Columbia.
+
+WEEK4 ------------------------------------
+
+#1 ------------------------------------
+LOAD DATA LOCAL INFILE '/Users/sid/Downloads/States_Territories.csv'
+INTO TABLE States
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(State, Abbreviation);
+
+#2 ------------------------------------
+MariaDB [hymes]> SELECT state, COUNT(*) AS cnt
+    -> FROM vets
+    -> GROUP BY state
+    -> ORDER BY cnt DESC;
++-------+------+
+| state | cnt  |
++-------+------+
+| CA    | 5575 |
+| NY    | 4120 |
+| TX    | 3414 |
+| PA    | 3141 |
+| OH    | 3092 |
+| IL    | 2930 |
+| MI    | 2654 |
+| FL    | 1950 |
+| NC    | 1609 |
+| GA    | 1583 |
+| IN    | 1531 |
+| NJ    | 1484 |
+| MO    | 1411 |
+| MA    | 1322 |
+| VA    | 1304 |
+| TN    | 1291 |
+| AL    | 1207 |
+| WI    | 1160 |
+| MN    | 1072 |
+| KY    | 1055 |
+| WA    | 1050 |
+| MD    | 1014 |
+| OK    |  988 |
+| SC    |  895 |
+| LA    |  882 |
+| IA    |  852 |
+| WV    |  731 |
+| OR    |  709 |
+| MS    |  637 |
+| KS    |  626 |
+| AZ    |  622 |
+| CO    |  619 |
+| CT    |  612 |
+| AR    |  588 |
+| NM    |  399 |
+| NE    |  395 |
+| UT    |  365 |
+| PR    |  345 |
+| ME    |  342 |
+| HI    |  277 |
+| MT    |  268 |
+| DC    |  241 |
+| NH    |  227 |
+| ID    |  217 |
+| RI    |  207 |
+| ND    |  198 |
+| SD    |  195 |
+| NV    |  151 |
+| DE    |  122 |
+| WY    |  119 |
+| VT    |  100 |
+| GU    |   70 |
+| XC    |   58 |
+| AK    |   57 |
+| XP    |   32 |
+| VQ    |   15 |
+| XG    |    7 |
+| XM    |    5 |
+| SO    |    4 |
+| XJ    |    4 |
+| ZZ    |    3 |
+| XE    |    3 |
+| XB    |    3 |
+| XN    |    3 |
+| XF    |    2 |
+| XI    |    2 |
+| CZ    |    2 |
+| XS    |    1 |
+| XA    |    1 |
++-------+------+
+69 rows in set (0.032 sec)
+#3 ------------------------------------
+SELECT DISTINCT v.state
+    -> FROM vets v
+    -> WHERE v.state NOT IN (
+    ->   SELECT s.Abbreviation
+    ->   FROM States s
+    -> );
++-------+
+| state |
++-------+
+| XP    |
+| XJ    |
+| VQ    |
+| XS    |
+| XC    |
+| XB    |
+| ZZ    |
+| XI    |
+| XN    |
+| XE    |
+| XG    |
+| XM    |
+| XF    |
+| SO    |
+| XA    |
+| CZ    |
++-------+
+16 rows in set (0.029 sec)
+#4 ------------------------------------
+- Creates mynewpaltz database:
+
+MariaDB [mynewpaltz]> show tables;
++----------------------+
+| Tables_in_mynewpaltz |
++----------------------+
+| CourseTable          |
+| EnrollmentTable      |
+| StudentTable         |
+| departments          |
+| employees            |
++----------------------+
+5 rows in set (0.001 sec)
+
