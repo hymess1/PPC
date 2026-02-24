@@ -1,0 +1,486 @@
+List employees and their managers:
+MySQL [employee]> select e.name as employee_name, m.name as manager_name from employees e join employees m on e.manager_id = m.id;
++---------------+--------------+
+| employee_name | manager_name |
++---------------+--------------+
+| Charlotte     | Emma         |
+| Ella          | William      |
+| Scarlett      | Olivia       |
+| Ava           | Ethan        |
+| Scarlett      | Sophia       |
+| Charlotte     | Robert       |
+| Evelyn        | Ava          |
+| Mia           | Noah         |
+| Ava           | Ethan        |
+| Ella          | James        |
+| Logan         | Emma         |
+| Evelyn        | Emma         |
+| Scarlett      | Ethan        |
+| Zoe           | Noah         |
+| Mia           | Isabella     |
+| Grace         | Ethan        |
+| Olivia        | James        |
+| Scarlett      | William      |
+| Mia           | Ava          |
+| Emma          | Olivia       |
+| Ethan         | Ethan        |
+| Logan         | Maria        |
+| Abigail       | Emma         |
+| Aiden         | Noah         |
+| Ava           | Liam         |
+| Charlotte     | James        |
+| Mateo         | Sophia       |
+| Charlotte     | Olivia       |
+| Jackson       | Sophia       |
+| Evelyn        | Ethan        |
+| Joseph        | James        |
+| Amelia        | Liam         |
+| Elijah        | William      |
+| Grace         | Liam         |
+| Olivia        | Isabella     |
+| Aiden         | Emma         |
+| Mason         | Maria        |
+| Ava           | Ethan        |
+| Ava           | Liam         |
+| Ava           | Emma         |
+| Elijah        | Emma         |
+| Sophia        | Maria        |
+| Joseph        | Ava          |
+| Oliver        | Ava          |
+| Mia           | Liam         |
+| Zoe           | Maria        |
+| Jackson       | James        |
+| Amelia        | Noah         |
+| Ella          | Emma         |
+| Evelyn        | Olivia       |
+| Grace         | William      |
+| Isabella      | Robert       |
+| Scarlett      | Noah         |
+| Joseph        | James        |
+| James         | Ethan        |
+| Mason         | Maria        |
+| Amelia        | Ava          |
+| Sophia        | Liam         |
+| Mateo         | Isabella     |
+| Aiden         | James        |
+| Amelia        | James        |
+| Lucas         | Ava          |
+| Scarlett      | Liam         |
+| Aiden         | Olivia       |
+| Ava           | James        |
+| Isabella      | Olivia       |
+| Sophia        | James        |
+| Ella          | Ethan        |
+| Noah          | Liam         |
+| Isabella      | Sophia       |
+| James         | Ethan        |
+| David         | Noah         |
+| Mia           | Robert       |
+| Noah          | William      |
+| Olivia        | Sophia       |
+| Harper        | Sophia       |
+| Sophia        | Maria        |
+| Emma          | Liam         |
+| Grace         | Emma         |
+| Aiden         | Liam         |
+| Mateo         | Ethan        |
+| Oliver        | Robert       |
+| Ava           | Ethan        |
+| Elijah        | Emma         |
+| Abigail       | Liam         |
+| Ethan         | James        |
+| Zoe           | James        |
+| Aiden         | Ava          |
+| Joseph        | Isabella     |
+| Lucas         | Robert       |
+| Noah          | Noah         |
+| Zoe           | Ava          |
+| Lucas         | Sophia       |
+| Logan         | William      |
+| Emma          | Robert       |
+| Logan         | James        |
+| Lucas         | William      |
+| Sebastian     | Sophia       |
+| Joseph        | Sophia       |
+| Evelyn        | Ava          |
+| Mia           | Emma         |
+| Emma          | Robert       |
+| Ella          | Noah         |
+| Scarlett      | Ava          |
+| Ethan         | Ava          |
+| Liam          | Noah         |
+| Olivia        | Emma         |
+| Liam          | Emma         |
+| Mason         | Liam         |
+| Jackson       | Ava          |
+| Isabella      | Ethan        |
+| Logan         | Ethan        |
+| Lucas         | Sophia       |
+| Mateo         | Isabella     |
+| Abigail       | Noah         |
+| David         | Ethan        |
+| Ella          | Ava          |
+| David         | Olivia       |
+| Charlotte     | James        |
+| Sophia        | Liam         |
+| Harper        | Olivia       |
+| Mateo         | Sophia       |
+| Mateo         | Ava          |
+| Lucas         | Ethan        |
+| Evelyn        | Ethan        |
+| David         | James        |
+| Isabella      | Liam         |
+| Ava           | Sophia       |
+| Liam          | Olivia       |
+| Zoe           | William      |
+| Isabella      | Sophia       |
+| Olivia        | Noah         |
+| Sebastian     | William      |
+| Jackson       | Olivia       |
+| Abigail       | Ethan        |
+| Amelia        | Sophia       |
+| Joseph        | Ava          |
+| Logan         | Liam         |
+| Sophia        | Olivia       |
+| Elijah        | Liam         |
+| Logan         | James        |
+| Ethan         | Robert       |
+| Jackson       | Ava          |
+| Sophia        | Olivia       |
+| Charlotte     | James        |
+| Mateo         | William      |
+| Lucas         | Ethan        |
+| Ella          | James        |
+| James         | Liam         |
+| Oliver        | Maria        |
+| Mateo         | William      |
+| Mia           | Robert       |
+| Ava           | Olivia       |
+| Oliver        | Olivia       |
+| Emma          | William      |
+| Aiden         | William      |
+| Grace         | Ava          |
+| Lucas         | James        |
+| Grace         | Robert       |
+| Jackson       | Noah         |
+| Abigail       | Ava          |
+| Jackson       | Ava          |
+| Noah          | Olivia       |
+| Charlotte     | Olivia       |
+| Mia           | William      |
+| Isabella      | Maria        |
+| Joseph        | Isabella     |
+| Emma          | Emma         |
+| Liam          | Noah         |
+| Mason         | Isabella     |
+| Lucas         | Ava          |
+| Grace         | Ethan        |
+| Charlotte     | Ava          |
+| David         | Olivia       |
++---------------+--------------+
+174 rows in set (0.001 sec)
+
+List departments and their managers:
+MySQL [employee]> select d.department_name, e.name from departments d join employees e on d.manager_id=e.id;
++------------------+----------+
+| department_name  | name     |
++------------------+----------+
+| Assembly         | James    |
+| Quality Control  | Maria    |
+| Machining        | Robert   |
+| Logistics        | Emma     |
+| Maintenance      | Liam     |
+| R&D              | Olivia   |
+| Procurement      | Noah     |
+| Health & Safety  | Ava      |
+| Packaging        | William  |
+| Inventory        | Sophia   |
+| Welding          | Ethan    |
+| Plant Management | Isabella |
++------------------+----------+
+12 rows in set (0.001 sec)
+
+List the department each person works in
+
+MySQL [employee]> select e.name, d.department_name from employees e join departments d on e.department_id=d.id;
++-----------+------------------+
+| name      | department_name  |
++-----------+------------------+
+| James     | Assembly         |
+| Scarlett  | Assembly         |
+| Olivia    | Assembly         |
+| Emma      | Assembly         |
+| Ethan     | Assembly         |
+| Mateo     | Assembly         |
+| Scarlett  | Assembly         |
+| Aiden     | Assembly         |
+| Aiden     | Assembly         |
+| Aiden     | Assembly         |
+| Emma      | Assembly         |
+| Ethan     | Assembly         |
+| Logan     | Assembly         |
+| Oliver    | Assembly         |
+| Lucas     | Assembly         |
+| David     | Assembly         |
+| Maria     | Quality Control  |
+| Scarlett  | Quality Control  |
+| Charlotte | Quality Control  |
+| Evelyn    | Quality Control  |
+| Mason     | Quality Control  |
+| Ava       | Quality Control  |
+| Sophia    | Quality Control  |
+| Noah      | Quality Control  |
+| Abigail   | Quality Control  |
+| Elijah    | Quality Control  |
+| Grace     | Quality Control  |
+| Abigail   | Quality Control  |
+| Robert    | Machining        |
+| Charlotte | Machining        |
+| Evelyn    | Machining        |
+| Mateo     | Machining        |
+| Charlotte | Machining        |
+| Zoe       | Machining        |
+| Jackson   | Machining        |
+| David     | Machining        |
+| Mateo     | Machining        |
+| Isabella  | Machining        |
+| Lucas     | Machining        |
+| Grace     | Machining        |
+| Isabella  | Machining        |
+| Emma      | Logistics        |
+| Aiden     | Logistics        |
+| Mason     | Logistics        |
+| Amelia    | Logistics        |
+| Amelia    | Logistics        |
+| Harper    | Logistics        |
+| Sebastian | Logistics        |
+| Abigail   | Logistics        |
+| Liam      | Logistics        |
+| Abigail   | Logistics        |
+| Amelia    | Logistics        |
+| Jackson   | Logistics        |
+| Joseph    | Logistics        |
+| Liam      | Maintenance      |
+| Elijah    | Maintenance      |
+| Jackson   | Maintenance      |
+| David     | Maintenance      |
+| Mia       | Maintenance      |
+| Ava       | Maintenance      |
+| Mateo     | Maintenance      |
+| Jackson   | Maintenance      |
+| Mateo     | Maintenance      |
+| Lucas     | Maintenance      |
+| Olivia    | R&D              |
+| Scarlett  | R&D              |
+| Ava       | R&D              |
+| Evelyn    | R&D              |
+| Zoe       | R&D              |
+| Sophia    | R&D              |
+| James     | R&D              |
+| Isabella  | R&D              |
+| Joseph    | R&D              |
+| Mia       | R&D              |
+| Liam      | R&D              |
+| Olivia    | R&D              |
+| Jackson   | R&D              |
+| Logan     | R&D              |
+| Mason     | R&D              |
+| Noah      | Procurement      |
+| Ava       | Procurement      |
+| Ella      | Procurement      |
+| Grace     | Procurement      |
+| Sophia    | Procurement      |
+| Oliver    | Procurement      |
+| Elijah    | Procurement      |
+| Joseph    | Procurement      |
+| Lucas     | Procurement      |
+| David     | Procurement      |
+| Harper    | Procurement      |
+| Evelyn    | Procurement      |
+| Aiden     | Procurement      |
+| Ava       | Health & Safety  |
+| Ella      | Health & Safety  |
+| Scarlett  | Health & Safety  |
+| Logan     | Health & Safety  |
+| Logan     | Health & Safety  |
+| Joseph    | Health & Safety  |
+| Grace     | Health & Safety  |
+| Joseph    | Health & Safety  |
+| Emma      | Health & Safety  |
+| Zoe       | Health & Safety  |
+| Logan     | Health & Safety  |
+| Evelyn    | Health & Safety  |
+| Lucas     | Health & Safety  |
+| David     | Health & Safety  |
+| Ava       | Health & Safety  |
+| Zoe       | Health & Safety  |
+| Isabella  | Health & Safety  |
+| Sophia    | Health & Safety  |
+| Logan     | Health & Safety  |
+| James     | Health & Safety  |
+| Oliver    | Health & Safety  |
+| Mia       | Health & Safety  |
+| Jackson   | Health & Safety  |
+| Noah      | Health & Safety  |
+| William   | Packaging        |
+| Jackson   | Packaging        |
+| Olivia    | Packaging        |
+| Mia       | Packaging        |
+| Sophia    | Packaging        |
+| Ella      | Packaging        |
+| Mateo     | Packaging        |
+| Isabella  | Packaging        |
+| Sophia    | Packaging        |
+| Olivia    | Packaging        |
+| Emma      | Packaging        |
+| Sophia    | Inventory        |
+| Charlotte | Inventory        |
+| Ava       | Inventory        |
+| Evelyn    | Inventory        |
+| Isabella  | Inventory        |
+| Noah      | Inventory        |
+| James     | Inventory        |
+| Noah      | Inventory        |
+| Liam      | Inventory        |
+| Lucas     | Inventory        |
+| Ella      | Inventory        |
+| Ethan     | Inventory        |
+| Charlotte | Inventory        |
+| Mateo     | Inventory        |
+| Mia       | Inventory        |
+| Liam      | Inventory        |
+| Ethan     | Welding          |
+| Aiden     | Welding          |
+| Joseph    | Welding          |
+| Elijah    | Welding          |
+| Ava       | Welding          |
+| Amelia    | Welding          |
+| Ella      | Welding          |
+| Scarlett  | Welding          |
+| Lucas     | Welding          |
+| Ava       | Welding          |
+| Grace     | Welding          |
+| Emma      | Welding          |
+| Scarlett  | Welding          |
+| Joseph    | Welding          |
+| Sophia    | Welding          |
+| Ella      | Welding          |
+| Emma      | Welding          |
+| Isabella  | Plant Management |
+| Mia       | Plant Management |
+| Mia       | Plant Management |
+| Abigail   | Plant Management |
+| Amelia    | Plant Management |
+| Grace     | Plant Management |
+| Zoe       | Plant Management |
+| Isabella  | Plant Management |
+| Ethan     | Plant Management |
+| Lucas     | Plant Management |
+| Lucas     | Plant Management |
+| Ella      | Plant Management |
+| Mason     | Plant Management |
+| Charlotte | Plant Management |
+| Charlotte | Plant Management |
+| Grace     | Plant Management |
++-----------+------------------+
+176 rows in set (0.001 sec)
+
+Find employees who have no manager:
+MySQL [employee]> select e.name as employees_with_no_manager from employees e where manager_id is null;
++---------------------------+
+| employees_with_no_manager |
++---------------------------+
+| James                     |
+| Maria                     |
+| Robert                    |
+| Emma                      |
+| Liam                      |
+| Olivia                    |
+| Noah                      |
+| Ava                       |
+| William                   |
+| Sophia                    |
+| Ethan                     |
+| Isabella                  |
+| Omar                      |
+| Sherif                    |
++---------------------------+
+14 rows in set (0.003 sec)
+
+
+Find employees who have no departments:
+MySQL [employee]> select e.name as employee_with_no_dept from employees e where department_id is null;
++-----------------------+
+| employee_with_no_dept |
++-----------------------+
+| Mia                   |
+| Ava                   |
+| Oliver                |
+| Omar                  |
+| Aiden                 |
+| Olivia                |
+| Logan                 |
+| Mateo                 |
+| Sherif                |
+| Sebastian             |
+| Ava                   |
+| Charlotte             |
++-----------------------+
+12 rows in set (0.001 sec)
+
+Show a count of employees in each department, including those who have no departments:
+
+MySQL [employee]> SELECT d.department_name,
+    ->        COUNT(e.id) AS employee_count
+    -> FROM employees e
+    -> LEFT JOIN departments d
+    ->   ON e.department_id = d.id
+    -> GROUP BY d.department_name;
++------------------+----------------+
+| department_name  | employee_count |
++------------------+----------------+
+| NULL             |             12 |
+| Assembly         |             16 |
+| Quality Control  |             12 |
+| Machining        |             13 |
+| Logistics        |             13 |
+| Maintenance      |             10 |
+| R&D              |             15 |
+| Procurement      |             13 |
+| Health & Safety  |             24 |
+| Packaging        |             11 |
+| Inventory        |             16 |
+| Welding          |             17 |
+| Plant Management |             16 |
++------------------+----------------+
+13 rows in set (0.001 sec)
+
+List name, salary, and department name of managers (those who have a department but no manager):
+MySQL [employee]> select e.name, e.salary, d.department_name from employees e join departments d on e.department_id = d.id where e.manager_id is null and e.department_id is not null;
++----------+--------+------------------+
+| name     | salary | department_name  |
++----------+--------+------------------+
+| James    |  95000 | Assembly         |
+| Maria    |  92000 | Quality Control  |
+| Robert   |  88000 | Machining        |
+| Emma     |  91000 | Logistics        |
+| Liam     |  85000 | Maintenance      |
+| Olivia   | 110000 | R&D              |
+| Noah     |  78000 | Procurement      |
+| Ava      |  82000 | Health & Safety  |
+| William  |  75000 | Packaging        |
+| Sophia   |  84000 | Inventory        |
+| Ethan    |  89000 | Welding          |
+| Isabella | 125000 | Plant Management |
++----------+--------+------------------+
+12 rows in set (0.001 sec)
+
+List employees whose salaries are higher than their manager’s salaries.:
+MySQL [employee]> select e.name, e.salary from employees e join employees m  on e.manager_id=m.id where e.salary>m.salary;
++----------+--------+
+| name     | salary |
++----------+--------+
+| Ella     |  97000 |
+| Scarlett |  77000 |
++----------+--------+
+2 rows in set (0.002 sec)
