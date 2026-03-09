@@ -1,0 +1,594 @@
+1. List students by name and ssn who are taking 5 courses
+MySQL [mynewpaltz]> select s.firstName, s.lastName, s.ssn  from StudentTable s join EnrollmentTable e on s.ssn = e.ssn group by s.ssn  having count(e.courseID)=5;
++-----------+----------+-----------+
+| firstName | lastName | ssn       |
++-----------+----------+-----------+
+| Kevin     | Green    | 100000041 |
+| Michelle  | Adams    | 100000042 |
+| Brian     | Nelson   | 100000043 |
+| Carol     | Baker    | 100000044 |
+| Edward    | Hall     | 100000045 |
+| Ronald    | Campbell | 100000047 |
+| Melissa   | Mitchell | 100000048 |
+| Timothy   | Carter   | 100000049 |
+| Deborah   | Roberts  | 100000050 |
+| Stephanie | Phillips | 100000052 |
+| Jeffrey   | Evans    | 100000053 |
+| Rebecca   | Turner   | 100000054 |
+| Ryan      | Diaz     | 100000055 |
+| Laura     | Parker   | 100000056 |
+| Sharon    | Edwards  | 100000058 |
+| Gary      | Collins  | 100000059 |
+| Cynthia   | Reyes    | 100000060 |
++-----------+----------+-----------+
+17 rows in set (0.001 sec)
+
+2. List students by name and ssn who are taking 4 courses
+MySQL [mynewpaltz]> select s.firstName, s.lastName, s.ssn  from StudentTable s join EnrollmentTable e on s.ssn = e.ssn group by s.ssn  having count(e.courseID)=4;
++-----------+----------+-----------+
+| firstName | lastName | ssn       |
++-----------+----------+-----------+
+| Amanda    | Rivera   | 100000046 |
+| Jacob     | Cruz     | 100000057 |
++-----------+----------+-----------+
+2 rows in set (0.001 sec)
+
+3. List students by name and ssn who are taking 3 courses
+MySQL [mynewpaltz]> select s.firstName, s.lastName, s.ssn  from StudentTable s join EnrollmentTable e on s.ssn = e.ssn group by s.ssn  having count(e.courseID)=3;
++-------------+-----------+-----------+
+| firstName   | lastName  | ssn       |
++-------------+-----------+-----------+
+| James       | Smith     | 100000001 |
+| Mary        | Johnson   | 100000002 |
+| Robert      | Williams  | 100000003 |
+| Patricia    | Brown     | 100000004 |
+| John        | Jones     | 100000005 |
+| Jennifer    | Garcia    | 100000006 |
+| Michael     | Miller    | 100000007 |
+| Linda       | Davis     | 100000008 |
+| David       | Rodriguez | 100000009 |
+| Elizabeth   | Martinez  | 100000010 |
+| William     | Hernandez | 100000011 |
+| Barbara     | Lopez     | 100000012 |
+| Richard     | Gonzalez  | 100000013 |
+| Susan       | Wilson    | 100000014 |
+| Joseph      | Anderson  | 100000015 |
+| Jessica     | Thomas    | 100000016 |
+| Thomas      | Taylor    | 100000017 |
+| Sarah       | Moore     | 100000018 |
+| Christopher | Jackson   | 100000019 |
+| Karen       | Martin    | 100000020 |
++-------------+-----------+-----------+
+20 rows in set (0.001 sec)
+
+4. List students by name and ssn who are taking 2 courses
+MySQL [mynewpaltz]> select s.firstName, s.lastName, s.ssn  from StudentTable s join EnrollmentTable e on s.ssn = e.ssn group by s.ssn  having count(e.courseID)=2;
++-----------+------------+-----------+
+| firstName | lastName   | ssn       |
++-----------+------------+-----------+
+| Nicholas  | Stewart    | 100000061 |
+| Kathleen  | Morris     | 100000062 |
+| Eric      | Morales    | 100000063 |
+| Amy       | Murphy     | 100000064 |
+| Stephen   | Cook       | 100000065 |
+| Shirley   | Rogers     | 100000066 |
+| Jonathan  | Gutierrez  | 100000067 |
+| Angela    | Ortiz      | 100000068 |
+| Larry     | Morgan     | 100000069 |
+| Helen     | Cooper     | 100000070 |
+| Justin    | Peterson   | 100000071 |
+| Anna      | Bailey     | 100000072 |
+| Scott     | Reed       | 100000073 |
+| Brenda    | Kelly      | 100000074 |
+| Brandon   | Howard     | 100000075 |
+| Pamela    | Ramos      | 100000076 |
+| Frank     | Kim        | 100000077 |
+| Nicole    | Foster     | 100000078 |
+| Benjamin  | Alvarado   | 100000079 |
+| Emma      | Washington | 100000080 |
+| Gregory   | Butler     | 100000081 |
+| Samantha  | Simmons    | 100000082 |
+| Samuel    | Foster     | 100000083 |
+| Katherine | Gonzales   | 100000084 |
+| Raymond   | Bryant     | 100000085 |
+| Christine | Alexander  | 100000086 |
+| Patrick   | Russell    | 100000087 |
+| Debra     | Griffin    | 100000088 |
+| Alexander | Diaz       | 100000089 |
+| Rachel    | Hayes      | 100000090 |
+| Janet     | Ford       | 100000092 |
+| Dennis    | Hamilton   | 100000093 |
+| Catherine | Graham     | 100000094 |
+| Jerry     | Sullivan   | 100000095 |
+| Maria     | Wallace    | 100000096 |
+| Tyler     | Woods      | 100000097 |
+| Heather   | Cole       | 100000098 |
+| Aaron     | West       | 100000099 |
+| Diane     | Jordan     | 100000100 |
++-----------+------------+-----------+
+39 rows in set (0.003 sec)
+
+5. List students by name and ssn who are taking 1 course
+MySQL [mynewpaltz]> select s.firstName, s.lastName, s.ssn  from StudentTable s join EnrollmentTable e on s.ssn = e.ssn group by s.ssn  having count(e.courseID)=1;
++-----------+----------+-----------+
+| firstName | lastName | ssn       |
++-----------+----------+-----------+
+| Charles   | Lee      | 100000021 |
+| Nancy     | Perez    | 100000022 |
+| Matthew   | Thompson | 100000023 |
+| Lisa      | White    | 100000024 |
+| Anthony   | Harris   | 100000025 |
+| Betty     | Sanchez  | 100000026 |
+| Mark      | Clark    | 100000027 |
+| Margaret  | Ramirez  | 100000028 |
+| Donald    | Lewis    | 100000029 |
+| Sandra    | Robinson | 100000030 |
+| Steven    | Walker   | 100000031 |
+| Ashley    | Young    | 100000032 |
+| Paul      | Allen    | 100000033 |
+| Dorothy   | King     | 100000034 |
+| Andrew    | Wright   | 100000035 |
+| Kimberly  | Scott    | 100000036 |
+| Joshua    | Torres   | 100000037 |
+| Emily     | Nguyen   | 100000038 |
+| Kenneth   | Hill     | 100000039 |
+| Donna     | Flores   | 100000040 |
++-----------+----------+-----------+
+20 rows in set (0.001 sec)
+
+6. List students by name and ssn who are taking 0 courses
+MySQL [mynewpaltz]> select s.firstName, s.lastName, s.ssn from StudentTable s left join EnrollmentTable e on s.ssn = e.ssn where e.courseId is null;
++-----------+----------+-----------+
+| firstName | lastName | ssn       |
++-----------+----------+-----------+
+| Jason     | Gomez    | 100000051 |
+| Jack      | Myers    | 100000091 |
++-----------+----------+-----------+
+2 rows in set (0.001 sec)
+
+7. Give a count of 4 credit courses by subjectID (# of 4-credit courses in each subject).
+MySQL [mynewpaltz]> select subjectId, count(courseID) as '4CredCouseCount' from CourseTable where numOfCredits = 4 group by subjectId;
++-----------+-----------------+
+| subjectId | 4CredCouseCount |
++-----------+-----------------+
+| MATH      |               2 |
+| CS        |               2 |
+| ENGR      |               2 |
++-----------+-----------------+
+3 rows in set (0.003 sec)
+
+8. Give a count of 3 credit courses by subjectID
+MySQL [mynewpaltz]> select subjectId, count(courseID) as '4CredCouseCount' from CourseTable where numOfCredits = 3 group by subjectId;
++-----------+-----------------+
+| subjectId | 4CredCouseCount |
++-----------+-----------------+
+| MATH      |               3 |
+| CS        |               3 |
+| ENGL      |               5 |
+| ENGR      |               2 |
++-----------+-----------------+
+4 rows in set (0.001 sec)
+
+9. Give a count of 2 credit courses by subjectID
+MySQL [mynewpaltz]> select subjectId, count(courseID) as '4CredCouseCount' from CourseTable where numOfCredits = 2 group by subjectId;
++-----------+-----------------+
+| subjectId | 4CredCouseCount |
++-----------+-----------------+
+| ENGR      |               1 |
++-----------+-----------------+
+1 row in set (0.001 sec)
+
+10. Are there any 5 credit courses?Are there any 1 credit courses?
+MySQL [mynewpaltz]> select * from CourseTable where numOfCredits = 5;
+Empty set (0.002 sec)
+No
+
+MySQL [mynewpaltz]> select * from CourseTable where numOfCredits = 1;
+Empty set (0.001 sec)
+No
+
+11. List all enrolled students by name and their grades in each enrolled course
+MySQL [mynewpaltz]> select s.firstName, s.lastName, e.courseID,c.title,e.grade from StudentTable s join EnrollmentTable e on s.ssn = e.ssn join CourseTable c on e.courseID = c.courseID order by s.lastName desc;
++-------------+------------+----------+-----------------------------+-------+
+| firstName   | lastName   | courseID | title                       | grade |
++-------------+------------+----------+-----------------------------+-------+
+| Ashley      | Young      |       12 | English Composition II      | C     |
+| Andrew      | Wright     |       15 | Shakespeare                 | C     |
+| Tyler       | Woods      |        6 | Intro to Computer Science   | C     |
+| Tyler       | Woods      |        1 | Calculus I                  | A     |
+| Susan       | Wilson     |       19 | Thermodynamics              | C     |
+| Susan       | Wilson     |        4 | Probability and Statistics  | C     |
+| Susan       | Wilson     |       14 | Creative Writing            | B     |
+| Robert      | Williams   |        3 | Linear Algebra              | A     |
+| Robert      | Williams   |       13 | World Literature            | C     |
+| Robert      | Williams   |        8 | Operating Systems           | A     |
+| Lisa        | White      |        4 | Probability and Statistics  | A     |
+| Aaron       | West       |        3 | Linear Algebra              | B     |
+| Aaron       | West       |        8 | Operating Systems           | B     |
+| Emma        | Washington |        4 | Probability and Statistics  | C     |
+| Emma        | Washington |        9 | Database Management Systems | A     |
+| Maria       | Wallace    |        5 | Abstract Algebra            | B     |
+| Maria       | Wallace    |       20 | Circuit Analysis            | B     |
+| Steven      | Walker     |       11 | English Composition I       | B     |
+| Rebecca     | Turner     |       15 | Shakespeare                 | B     |
+| Rebecca     | Turner     |        9 | Database Management Systems | B     |
+| Rebecca     | Turner     |       18 | Dynamics                    | C     |
+| Rebecca     | Turner     |        6 | Intro to Computer Science   | C     |
+| Rebecca     | Turner     |       12 | English Composition II      | A     |
+| Joshua      | Torres     |       17 | Statics                     | B     |
+| Matthew     | Thompson   |        3 | Linear Algebra              | C     |
+| Jessica     | Thomas     |        1 | Calculus I                  | C     |
+| Jessica     | Thomas     |        6 | Intro to Computer Science   | B     |
+| Jessica     | Thomas     |       11 | English Composition I       | A     |
+| Thomas      | Taylor     |        2 | Calculus II                 | B     |
+| Thomas      | Taylor     |        7 | Data Structures             | A     |
+| Thomas      | Taylor     |       12 | English Composition II      | B     |
+| Jerry       | Sullivan   |        4 | Probability and Statistics  | A     |
+| Jerry       | Sullivan   |       19 | Thermodynamics              | C     |
+| Nicholas    | Stewart    |       10 | Artificial Intelligence     | B     |
+| Nicholas    | Stewart    |        5 | Abstract Algebra            | A     |
+| James       | Smith      |        6 | Intro to Computer Science   | B     |
+| James       | Smith      |        1 | Calculus I                  | A     |
+| James       | Smith      |       11 | English Composition I       | A     |
+| Samantha    | Simmons    |       11 | English Composition I       | C     |
+| Samantha    | Simmons    |        6 | Intro to Computer Science   | A     |
+| Kimberly    | Scott      |       16 | Intro to Engineering        | A     |
+| Betty       | Sanchez    |        6 | Intro to Computer Science   | C     |
+| Patrick     | Russell    |       11 | English Composition I       | B     |
+| Patrick     | Russell    |       16 | Intro to Engineering        | B     |
+| Shirley     | Rogers     |       15 | Shakespeare                 | B     |
+| Shirley     | Rogers     |       10 | Artificial Intelligence     | B     |
+| David       | Rodriguez  |        9 | Database Management Systems | B     |
+| David       | Rodriguez  |       19 | Thermodynamics              | C     |
+| David       | Rodriguez  |        4 | Probability and Statistics  | B     |
+| Sandra      | Robinson   |       10 | Artificial Intelligence     | A     |
+| Deborah     | Roberts    |        2 | Calculus II                 | B     |
+| Deborah     | Roberts    |        8 | Operating Systems           | A     |
+| Deborah     | Roberts    |       14 | Creative Writing            | A     |
+| Deborah     | Roberts    |        5 | Abstract Algebra            | C     |
+| Deborah     | Roberts    |       11 | English Composition I       | B     |
+| Amanda      | Rivera     |        2 | Calculus II                 | A     |
+| Amanda      | Rivera     |        4 | Probability and Statistics  | A     |
+| Amanda      | Rivera     |        8 | Operating Systems           | B     |
+| Amanda      | Rivera     |        6 | Intro to Computer Science   | B     |
+| Cynthia     | Reyes      |        4 | Probability and Statistics  | B     |
+| Cynthia     | Reyes      |       15 | Shakespeare                 | C     |
+| Cynthia     | Reyes      |        1 | Calculus I                  | A     |
+| Cynthia     | Reyes      |       18 | Dynamics                    | B     |
+| Cynthia     | Reyes      |       12 | English Composition II      | A     |
+| Scott       | Reed       |       17 | Statics                     | A     |
+| Scott       | Reed       |        2 | Calculus II                 | C     |
+| Pamela      | Ramos      |       20 | Circuit Analysis            | A     |
+| Pamela      | Ramos      |        5 | Abstract Algebra            | C     |
+| Margaret    | Ramirez    |        8 | Operating Systems           | B     |
+| Stephanie   | Phillips   |       16 | Intro to Engineering        | B     |
+| Stephanie   | Phillips   |       13 | World Literature            | A     |
+| Stephanie   | Phillips   |        4 | Probability and Statistics  | A     |
+| Stephanie   | Phillips   |       10 | Artificial Intelligence     | C     |
+| Stephanie   | Phillips   |        7 | Data Structures             | B     |
+| Justin      | Peterson   |       20 | Circuit Analysis            | A     |
+| Justin      | Peterson   |       15 | Shakespeare                 | C     |
+| Nancy       | Perez      |        2 | Calculus II                 | B     |
+| Laura       | Parker     |       20 | Circuit Analysis            | C     |
+| Laura       | Parker     |       11 | English Composition I       | A     |
+| Laura       | Parker     |       17 | Statics                     | A     |
+| Laura       | Parker     |       14 | Creative Writing            | C     |
+| Laura       | Parker     |        8 | Operating Systems           | B     |
+| Angela      | Ortiz      |       12 | English Composition II      | C     |
+| Angela      | Ortiz      |       17 | Statics                     | A     |
+| Emily       | Nguyen     |       18 | Dynamics                    | C     |
+| Brian       | Nelson     |       15 | Shakespeare                 | C     |
+| Brian       | Nelson     |       11 | English Composition I       | C     |
+| Brian       | Nelson     |       12 | English Composition II      | B     |
+| Brian       | Nelson     |       14 | Creative Writing            | A     |
+| Brian       | Nelson     |       13 | World Literature            | A     |
+| Amy         | Murphy     |       13 | World Literature            | B     |
+| Amy         | Murphy     |        8 | Operating Systems           | A     |
+| Kathleen    | Morris     |       11 | English Composition I       | A     |
+| Kathleen    | Morris     |        6 | Intro to Computer Science   | C     |
+| Larry       | Morgan     |       13 | World Literature            | B     |
+| Larry       | Morgan     |       18 | Dynamics                    | B     |
+| Eric        | Morales    |       12 | English Composition II      | C     |
+| Eric        | Morales    |        7 | Data Structures             | B     |
+| Sarah       | Moore      |        8 | Operating Systems           | C     |
+| Sarah       | Moore      |       13 | World Literature            | C     |
+| Sarah       | Moore      |        3 | Linear Algebra              | A     |
+| Melissa     | Mitchell   |       20 | Circuit Analysis            | B     |
+| Melissa     | Mitchell   |       16 | Intro to Engineering        | C     |
+| Melissa     | Mitchell   |       14 | Creative Writing            | A     |
+| Melissa     | Mitchell   |       12 | English Composition II      | B     |
+| Melissa     | Mitchell   |       18 | Dynamics                    | A     |
+| Michael     | Miller     |       17 | Statics                     | B     |
+| Michael     | Miller     |        7 | Data Structures             | B     |
+| Michael     | Miller     |        2 | Calculus II                 | A     |
+| Elizabeth   | Martinez   |       10 | Artificial Intelligence     | C     |
+| Elizabeth   | Martinez   |        5 | Abstract Algebra            | A     |
+| Elizabeth   | Martinez   |       20 | Circuit Analysis            | A     |
+| Karen       | Martin     |       10 | Artificial Intelligence     | B     |
+| Karen       | Martin     |        5 | Abstract Algebra            | C     |
+| Karen       | Martin     |       15 | Shakespeare                 | B     |
+| Barbara     | Lopez      |       17 | Statics                     | B     |
+| Barbara     | Lopez      |       12 | English Composition II      | C     |
+| Barbara     | Lopez      |        2 | Calculus II                 | A     |
+| Donald      | Lewis      |        9 | Database Management Systems | C     |
+| Charles     | Lee        |        1 | Calculus I                  | A     |
+| Dorothy     | King       |       14 | Creative Writing            | B     |
+| Frank       | Kim        |        6 | Intro to Computer Science   | A     |
+| Frank       | Kim        |        1 | Calculus I                  | C     |
+| Brenda      | Kelly      |       18 | Dynamics                    | C     |
+| Brenda      | Kelly      |        3 | Linear Algebra              | A     |
+| Diane       | Jordan     |        9 | Database Management Systems | C     |
+| Diane       | Jordan     |        4 | Probability and Statistics  | A     |
+| John        | Jones      |       15 | Shakespeare                 | B     |
+| John        | Jones      |       10 | Artificial Intelligence     | A     |
+| John        | Jones      |        5 | Abstract Algebra            | C     |
+| Mary        | Johnson    |       12 | English Composition II      | B     |
+| Mary        | Johnson    |        2 | Calculus II                 | B     |
+| Mary        | Johnson    |        7 | Data Structures             | C     |
+| Christopher | Jackson    |       14 | Creative Writing            | A     |
+| Christopher | Jackson    |        4 | Probability and Statistics  | B     |
+| Christopher | Jackson    |        9 | Database Management Systems | A     |
+| Brandon     | Howard     |        4 | Probability and Statistics  | B     |
+| Brandon     | Howard     |       19 | Thermodynamics              | B     |
+| Kenneth     | Hill       |       19 | Thermodynamics              | A     |
+| William     | Hernandez  |       16 | Intro to Engineering        | A     |
+| William     | Hernandez  |       11 | English Composition I       | B     |
+| William     | Hernandez  |        1 | Calculus I                  | B     |
+| Rachel      | Hayes      |       14 | Creative Writing            | B     |
+| Rachel      | Hayes      |       19 | Thermodynamics              | B     |
+| Anthony     | Harris     |        5 | Abstract Algebra            | B     |
+| Dennis      | Hamilton   |       17 | Statics                     | B     |
+| Dennis      | Hamilton   |        2 | Calculus II                 | B     |
+| Edward      | Hall       |        3 | Linear Algebra              | B     |
+| Edward      | Hall       |        9 | Database Management Systems | A     |
+| Edward      | Hall       |        5 | Abstract Algebra            | A     |
+| Edward      | Hall       |        1 | Calculus I                  | B     |
+| Edward      | Hall       |        7 | Data Structures             | C     |
+| Jonathan    | Gutierrez  |       11 | English Composition I       | A     |
+| Jonathan    | Gutierrez  |       16 | Intro to Engineering        | C     |
+| Debra       | Griffin    |       12 | English Composition II      | A     |
+| Debra       | Griffin    |       17 | Statics                     | C     |
+| Kevin       | Green      |        3 | Linear Algebra              | A     |
+| Kevin       | Green      |        4 | Probability and Statistics  | C     |
+| Kevin       | Green      |        2 | Calculus II                 | B     |
+| Kevin       | Green      |        1 | Calculus I                  | A     |
+| Kevin       | Green      |        5 | Abstract Algebra            | B     |
+| Catherine   | Graham     |       18 | Dynamics                    | A     |
+| Catherine   | Graham     |        3 | Linear Algebra              | C     |
+| Richard     | Gonzalez   |       18 | Dynamics                    | A     |
+| Richard     | Gonzalez   |       13 | World Literature            | A     |
+| Richard     | Gonzalez   |        3 | Linear Algebra              | B     |
+| Katherine   | Gonzales   |        8 | Operating Systems           | B     |
+| Katherine   | Gonzales   |       13 | World Literature            | B     |
+| Jennifer    | Garcia     |        6 | Intro to Computer Science   | C     |
+| Jennifer    | Garcia     |        1 | Calculus I                  | B     |
+| Jennifer    | Garcia     |       16 | Intro to Engineering        | A     |
+| Nicole      | Foster     |        2 | Calculus II                 | B     |
+| Samuel      | Foster     |       12 | English Composition II      | A     |
+| Nicole      | Foster     |        7 | Data Structures             | B     |
+| Samuel      | Foster     |        7 | Data Structures             | C     |
+| Janet       | Ford       |       16 | Intro to Engineering        | C     |
+| Janet       | Ford       |        1 | Calculus I                  | A     |
+| Donna       | Flores     |       20 | Circuit Analysis            | B     |
+| Jeffrey     | Evans      |        5 | Abstract Algebra            | B     |
+| Jeffrey     | Evans      |       17 | Statics                     | A     |
+| Jeffrey     | Evans      |       14 | Creative Writing            | B     |
+| Jeffrey     | Evans      |       11 | English Composition I       | C     |
+| Jeffrey     | Evans      |        8 | Operating Systems           | A     |
+| Sharon      | Edwards    |       10 | Artificial Intelligence     | C     |
+| Sharon      | Edwards    |       16 | Intro to Engineering        | B     |
+| Sharon      | Edwards    |        2 | Calculus II                 | A     |
+| Sharon      | Edwards    |       13 | World Literature            | A     |
+| Sharon      | Edwards    |       19 | Thermodynamics              | C     |
+| Ryan        | Diaz       |       10 | Artificial Intelligence     | C     |
+| Ryan        | Diaz       |       13 | World Literature            | B     |
+| Ryan        | Diaz       |       19 | Thermodynamics              | B     |
+| Alexander   | Diaz       |       13 | World Literature            | C     |
+| Ryan        | Diaz       |        7 | Data Structures             | A     |
+| Ryan        | Diaz       |       16 | Intro to Engineering        | A     |
+| Alexander   | Diaz       |       18 | Dynamics                    | A     |
+| Linda       | Davis      |        3 | Linear Algebra              | C     |
+| Linda       | Davis      |       18 | Dynamics                    | A     |
+| Linda       | Davis      |        8 | Operating Systems           | A     |
+| Jacob       | Cruz       |       15 | Shakespeare                 | B     |
+| Jacob       | Cruz       |        9 | Database Management Systems | A     |
+| Jacob       | Cruz       |       18 | Dynamics                    | A     |
+| Jacob       | Cruz       |       12 | English Composition II      | C     |
+| Helen       | Cooper     |       14 | Creative Writing            | A     |
+| Helen       | Cooper     |       19 | Thermodynamics              | C     |
+| Stephen     | Cook       |        9 | Database Management Systems | C     |
+| Stephen     | Cook       |       14 | Creative Writing            | A     |
+| Gary        | Collins    |       11 | English Composition I       | B     |
+| Gary        | Collins    |        3 | Linear Algebra              | C     |
+| Gary        | Collins    |       14 | Creative Writing            | B     |
+| Gary        | Collins    |       17 | Statics                     | A     |
+| Gary        | Collins    |       20 | Circuit Analysis            | B     |
+| Heather     | Cole       |        7 | Data Structures             | A     |
+| Heather     | Cole       |        2 | Calculus II                 | C     |
+| Mark        | Clark      |        7 | Data Structures             | A     |
+| Timothy     | Carter     |        1 | Calculus I                  | A     |
+| Timothy     | Carter     |        4 | Probability and Statistics  | B     |
+| Timothy     | Carter     |       10 | Artificial Intelligence     | C     |
+| Timothy     | Carter     |        7 | Data Structures             | A     |
+| Timothy     | Carter     |       13 | World Literature            | B     |
+| Ronald      | Campbell   |       13 | World Literature            | B     |
+| Ronald      | Campbell   |       15 | Shakespeare                 | A     |
+| Ronald      | Campbell   |       11 | English Composition I       | C     |
+| Ronald      | Campbell   |       17 | Statics                     | B     |
+| Ronald      | Campbell   |       19 | Thermodynamics              | A     |
+| Gregory     | Butler     |       10 | Artificial Intelligence     | B     |
+| Gregory     | Butler     |        5 | Abstract Algebra            | B     |
+| Raymond     | Bryant     |       14 | Creative Writing            | C     |
+| Raymond     | Bryant     |        9 | Database Management Systems | A     |
+| Patricia    | Brown      |        4 | Probability and Statistics  | B     |
+| Patricia    | Brown      |        9 | Database Management Systems | B     |
+| Patricia    | Brown      |       14 | Creative Writing            | A     |
+| Carol       | Baker      |       20 | Circuit Analysis            | B     |
+| Carol       | Baker      |       16 | Intro to Engineering        | A     |
+| Carol       | Baker      |       19 | Thermodynamics              | A     |
+| Carol       | Baker      |       17 | Statics                     | C     |
+| Carol       | Baker      |       18 | Dynamics                    | B     |
+| Anna        | Bailey     |        1 | Calculus I                  | B     |
+| Anna        | Bailey     |       16 | Intro to Engineering        | B     |
+| Joseph      | Anderson   |       15 | Shakespeare                 | A     |
+| Joseph      | Anderson   |       20 | Circuit Analysis            | B     |
+| Joseph      | Anderson   |        5 | Abstract Algebra            | A     |
+| Benjamin    | Alvarado   |        3 | Linear Algebra              | A     |
+| Benjamin    | Alvarado   |        8 | Operating Systems           | C     |
+| Paul        | Allen      |       13 | World Literature            | A     |
+| Christine   | Alexander  |       10 | Artificial Intelligence     | C     |
+| Christine   | Alexander  |       15 | Shakespeare                 | A     |
+| Michelle    | Adams      |        9 | Database Management Systems | B     |
+| Michelle    | Adams      |        8 | Operating Systems           | C     |
+| Michelle    | Adams      |        7 | Data Structures             | A     |
+| Michelle    | Adams      |        6 | Intro to Computer Science   | B     |
+| Michelle    | Adams      |       10 | Artificial Intelligence     | A     |
++-------------+------------+----------+-----------------------------+-------+
+251 rows in set (0.004 sec)
+
+12. For the course identified by courseID of 10, list the number of students enrolled, course number as
+well as subjectID
+MySQL [mynewpaltz]> select count(e.ssn), c.courseNumber, c.subjectId from EnrollmentTable e join CourseTable c on e.courseID = c.courseID group by c.courseID having c.courseID = 10;
++--------------+--------------+-----------+
+| count(e.ssn) | courseNumber | subjectId |
++--------------+--------------+-----------+
+|           13 |          450 | CS        |
++--------------+--------------+-----------+
+1 row in set (0.001 sec)
+
+13. How many students are in each course (identified uniquely by courseID)?
+MySQL [mynewpaltz]> select courseID, count(ssn) as numStudents from EnrollmentTable group by courseID;
++----------+-------------+
+| courseID | numStudents |
++----------+-------------+
+|        1 |          13 |
+|        2 |          13 |
+|        3 |          12 |
+|        4 |          14 |
+|        5 |          13 |
+|        6 |          11 |
+|        7 |          13 |
+|        8 |          13 |
+|        9 |          12 |
+|       10 |          13 |
+|       11 |          14 |
+|       12 |          13 |
+|       13 |          14 |
+|       14 |          14 |
+|       15 |          12 |
+|       16 |          12 |
+|       17 |          12 |
+|       18 |          12 |
+|       19 |          11 |
+|       20 |          10 |
++----------+-------------+
+20 rows in set (0.001 sec)
+
+14. For each student enrolled, list the first name, last name, and number of credits that student was
+taking.
+MySQL [mynewpaltz]> select s.firstName, s.lastName, sum(c.numOfCredits) as totalCredits from StudentTable s join EnrollmentTable e on s.ssn = e.ssn join CourseTable c on e.courseID = c.courseID group by s.ssn
+    -> ;
++-------------+------------+--------------+
+| firstName   | lastName   | totalCredits |
++-------------+------------+--------------+
+| James       | Smith      |           11 |
+| Jennifer    | Garcia     |           10 |
+| William     | Hernandez  |            9 |
+| Jessica     | Thomas     |           11 |
+| Charles     | Lee        |            4 |
+| Kevin       | Green      |           17 |
+| Edward      | Hall       |           16 |
+| Timothy     | Carter     |           16 |
+| Cynthia     | Reyes      |           16 |
+| Anna        | Bailey     |            6 |
+| Frank       | Kim        |            8 |
+| Janet       | Ford       |            6 |
+| Tyler       | Woods      |            8 |
+| Mary        | Johnson    |           10 |
+| Michael     | Miller     |           10 |
+| Barbara     | Lopez      |           10 |
+| Thomas      | Taylor     |           10 |
+| Nancy       | Perez      |            4 |
+| Amanda      | Rivera     |           15 |
+| Deborah     | Roberts    |           17 |
+| Sharon      | Edwards    |           16 |
+| Scott       | Reed       |            7 |
+| Nicole      | Foster     |            7 |
+| Dennis      | Hamilton   |            7 |
+| Heather     | Cole       |            7 |
+| Robert      | Williams   |           10 |
+| Linda       | Davis      |           10 |
+| Richard     | Gonzalez   |            9 |
+| Sarah       | Moore      |           10 |
+| Matthew     | Thompson   |            3 |
+| Gary        | Collins    |           16 |
+| Brenda      | Kelly      |            6 |
+| Benjamin    | Alvarado   |            7 |
+| Catherine   | Graham     |            6 |
+| Aaron       | West       |            7 |
+| Patricia    | Brown      |            9 |
+| David       | Rodriguez  |           10 |
+| Susan       | Wilson     |           10 |
+| Christopher | Jackson    |            9 |
+| Lisa        | White      |            3 |
+| Stephanie   | Phillips   |           14 |
+| Brandon     | Howard     |            7 |
+| Emma        | Washington |            6 |
+| Jerry       | Sullivan   |            7 |
+| Diane       | Jordan     |            6 |
+| John        | Jones      |            9 |
+| Elizabeth   | Martinez   |           10 |
+| Joseph      | Anderson   |           10 |
+| Karen       | Martin     |            9 |
+| Anthony     | Harris     |            3 |
+| Jeffrey     | Evans      |           16 |
+| Nicholas    | Stewart    |            6 |
+| Pamela      | Ramos      |            7 |
+| Gregory     | Butler     |            6 |
+| Maria       | Wallace    |            7 |
+| Betty       | Sanchez    |            4 |
+| Michelle    | Adams      |           17 |
+| Rebecca     | Turner     |           16 |
+| Kathleen    | Morris     |            7 |
+| Samantha    | Simmons    |            7 |
+| Mark        | Clark      |            3 |
+| Ryan        | Diaz       |           15 |
+| Eric        | Morales    |            6 |
+| Samuel      | Foster     |            6 |
+| Margaret    | Ramirez    |            4 |
+| Laura       | Parker     |           17 |
+| Amy         | Murphy     |            7 |
+| Katherine   | Gonzales   |            7 |
+| Donald      | Lewis      |            3 |
+| Jacob       | Cruz       |           12 |
+| Stephen     | Cook       |            6 |
+| Raymond     | Bryant     |            6 |
+| Sandra      | Robinson   |            3 |
+| Shirley     | Rogers     |            6 |
+| Christine   | Alexander  |            6 |
+| Steven      | Walker     |            3 |
+| Brian       | Nelson     |           15 |
+| Ronald      | Campbell   |           16 |
+| Jonathan    | Gutierrez  |            5 |
+| Patrick     | Russell    |            5 |
+| Ashley      | Young      |            3 |
+| Melissa     | Mitchell   |           15 |
+| Angela      | Ortiz      |            6 |
+| Debra       | Griffin    |            6 |
+| Paul        | Allen      |            3 |
+| Larry       | Morgan     |            6 |
+| Alexander   | Diaz       |            6 |
+| Dorothy     | King       |            3 |
+| Helen       | Cooper     |            7 |
+| Rachel      | Hayes      |            7 |
+| Andrew      | Wright     |            3 |
+| Justin      | Peterson   |            7 |
+| Kimberly    | Scott      |            2 |
+| Carol       | Baker      |           16 |
+| Joshua      | Torres     |            3 |
+| Emily       | Nguyen     |            3 |
+| Kenneth     | Hill       |            4 |
+| Donna       | Flores     |            4 |
++-------------+------------+--------------+
+98 rows in set (0.002 sec)
+
