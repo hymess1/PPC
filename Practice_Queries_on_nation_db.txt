@@ -1,0 +1,301 @@
+List # of regions in each continent.
+MySQL [nation]> select count(r.region_id), c.name from continents c join regions r on c.continent_id=r.continent_id group by c.name;
++--------------------+---------------+
+| count(r.region_id) | name          |
++--------------------+---------------+
+|                  3 | North America |
+|                  4 | Asia          |
+|                  5 | Africa        |
+|                  6 | Europe        |
+|                  1 | South America |
+|                  5 | Oceania       |
+|                  1 | Antarctica    |
++--------------------+---------------+
+7 rows in set (0.001 sec)
+
+List continents and the regions each continent contains
+MySQL [nation]> select c.name, r.name from continents c join regions r on c.continent_id=r.continent_id;
++---------------+---------------------------+
+| name          | name                      |
++---------------+---------------------------+
+| North America | Caribbean                 |
+| North America | Central America           |
+| North America | North America             |
+| Asia          | Southern and Central Asia |
+| Asia          | Middle East               |
+| Asia          | Southeast Asia            |
+| Asia          | Eastern Asia              |
+| Africa        | Central Africa            |
+| Africa        | Eastern Africa            |
+| Africa        | Western Africa            |
+| Africa        | Southern Africa           |
+| Africa        | Northern Africa           |
+| Europe        | Southern Europe           |
+| Europe        | Western Europe            |
+| Europe        | Eastern Europe            |
+| Europe        | Nordic Countries          |
+| Europe        | Baltic Countries          |
+| Europe        | British Islands           |
+| South America | South America             |
+| Oceania       | Polynesia                 |
+| Oceania       | Australia and New Zealand |
+| Oceania       | Melanesia                 |
+| Oceania       | Micronesia                |
+| Oceania       | Micronesia/Caribbean      |
+| Antarctica    | Antarctica                |
++---------------+---------------------------+
+25 rows in set (0.001 sec)
+
+Are there regions that span more than one continent?
+no
+
+Create a view called ContriesAndContinents that lists countries and the continents they are in by name,
+ordered by country names alphabetically.
+MySQL [nation]> create view countriesandcontinents as select co.name as country, c.name as continent from countries co join regions r on co.region_id = r.region_id join continents c on r.continent_id = c.continent_id order by co.name;
+Query OK, 0 rows affected (0.006 sec)
+
+MySQL [nation]> select * from countriesandcontinents;
++----------------------------------------------+---------------+
+| country                                      | continent     |
++----------------------------------------------+---------------+
+| Afghanistan                                  | Asia          |
+| Albania                                      | Europe        |
+| Algeria                                      | Africa        |
+| American Samoa                               | Oceania       |
+| Andorra                                      | Europe        |
+| Angola                                       | Africa        |
+| Anguilla                                     | North America |
+| Antarctica                                   | Antarctica    |
+| Antigua and Barbuda                          | North America |
+| Argentina                                    | South America |
+| Armenia                                      | Asia          |
+| Aruba                                        | North America |
+| Australia                                    | Oceania       |
+| Austria                                      | Europe        |
+| Azerbaijan                                   | Asia          |
+| Bahamas                                      | North America |
+| Bahrain                                      | Asia          |
+| Bangladesh                                   | Asia          |
+| Barbados                                     | North America |
+| Belarus                                      | Europe        |
+| Belgium                                      | Europe        |
+| Belize                                       | North America |
+| Benin                                        | Africa        |
+| Bermuda                                      | North America |
+| Bhutan                                       | Asia          |
+| Bolivia                                      | South America |
+| Bosnia and Herzegovina                       | Europe        |
+| Botswana                                     | Africa        |
+| Bouvet Island                                | Antarctica    |
+| Brazil                                       | South America |
+| British Indian Ocean Territory               | Africa        |
+| Brunei                                       | Asia          |
+| Bulgaria                                     | Europe        |
+| Burkina Faso                                 | Africa        |
+| Burundi                                      | Africa        |
+| Cambodia                                     | Asia          |
+| Cameroon                                     | Africa        |
+| Canada                                       | North America |
+| Cape Verde                                   | Africa        |
+| Cayman Islands                               | North America |
+| Central African Republic                     | Africa        |
+| Chad                                         | Africa        |
+| Chile                                        | South America |
+| China                                        | Asia          |
+| Christmas Island                             | Oceania       |
+| Cocos (Keeling) Islands                      | Oceania       |
+| Colombia                                     | South America |
+| Comoros                                      | Africa        |
+| Congo                                        | Africa        |
+| Cook Islands                                 | Oceania       |
+| Costa Rica                                   | North America |
+| Côte d’Ivoire                                | Africa        |
+| Croatia                                      | Europe        |
+| Cuba                                         | North America |
+| Cyprus                                       | Asia          |
+| Czech Republic                               | Europe        |
+| Denmark                                      | Europe        |
+| Djibouti                                     | Africa        |
+| Dominica                                     | North America |
+| Dominican Republic                           | North America |
+| East Timor                                   | Asia          |
+| Ecuador                                      | South America |
+| Egypt                                        | Africa        |
+| El Salvador                                  | North America |
+| Equatorial Guinea                            | Africa        |
+| Eritrea                                      | Africa        |
+| Estonia                                      | Europe        |
+| Ethiopia                                     | Africa        |
+| Falkland Islands                             | South America |
+| Faroe Islands                                | Europe        |
+| Federated States of Micronesia               | Oceania       |
+| Fiji Islands                                 | Oceania       |
+| Finland                                      | Europe        |
+| France                                       | Europe        |
+| French Guiana                                | South America |
+| French Polynesia                             | Oceania       |
+| French Southern territories                  | Antarctica    |
+| Gabon                                        | Africa        |
+| Gambia                                       | Africa        |
+| Georgia                                      | Asia          |
+| Germany                                      | Europe        |
+| Ghana                                        | Africa        |
+| Gibraltar                                    | Europe        |
+| Greece                                       | Europe        |
+| Greenland                                    | North America |
+| Grenada                                      | North America |
+| Guadeloupe                                   | North America |
+| Guam                                         | Oceania       |
+| Guatemala                                    | North America |
+| Guinea                                       | Africa        |
+| Guinea-Bissau                                | Africa        |
+| Guyana                                       | South America |
+| Haiti                                        | North America |
+| Heard Island and McDonald Islands            | Antarctica    |
+| Holy See (Vatican City State)                | Europe        |
+| Honduras                                     | North America |
+| Hong Kong                                    | Asia          |
+| Hungary                                      | Europe        |
+| Iceland                                      | Europe        |
+| India                                        | Asia          |
+| Indonesia                                    | Asia          |
+| Iran                                         | Asia          |
+| Iraq                                         | Asia          |
+| Ireland                                      | Europe        |
+| Israel                                       | Asia          |
+| Italy                                        | Europe        |
+| Jamaica                                      | North America |
+| Japan                                        | Asia          |
+| Jordan                                       | Asia          |
+| Kazakstan                                    | Asia          |
+| Kenya                                        | Africa        |
+| Kiribati                                     | Oceania       |
+| Kuwait                                       | Asia          |
+| Kyrgyzstan                                   | Asia          |
+| Laos                                         | Asia          |
+| Latvia                                       | Europe        |
+| Lebanon                                      | Asia          |
+| Lesotho                                      | Africa        |
+| Liberia                                      | Africa        |
+| Libyan Arab Jamahiriya                       | Africa        |
+| Liechtenstein                                | Europe        |
+| Lithuania                                    | Europe        |
+| Luxembourg                                   | Europe        |
+| Macao                                        | Asia          |
+| Macedonia                                    | Europe        |
+| Madagascar                                   | Africa        |
+| Malawi                                       | Africa        |
+| Malaysia                                     | Asia          |
+| Maldives                                     | Asia          |
+| Mali                                         | Africa        |
+| Malta                                        | Europe        |
+| Marshall Islands                             | Oceania       |
+| Martinique                                   | North America |
+| Mauritania                                   | Africa        |
+| Mauritius                                    | Africa        |
+| Mayotte                                      | Africa        |
+| Mexico                                       | North America |
+| Moldova                                      | Europe        |
+| Monaco                                       | Europe        |
+| Mongolia                                     | Asia          |
+| Montserrat                                   | North America |
+| Morocco                                      | Africa        |
+| Mozambique                                   | Africa        |
+| Myanmar                                      | Asia          |
+| Namibia                                      | Africa        |
+| Nauru                                        | Oceania       |
+| Nepal                                        | Asia          |
+| Netherlands                                  | Europe        |
+| Netherlands Antilles                         | North America |
+| New Caledonia                                | Oceania       |
+| New Zealand                                  | Oceania       |
+| Nicaragua                                    | North America |
+| Niger                                        | Africa        |
+| Nigeria                                      | Africa        |
+| Niue                                         | Oceania       |
+| Norfolk Island                               | Oceania       |
+| North Korea                                  | Asia          |
+| Northern Mariana Islands                     | Oceania       |
+| Norway                                       | Europe        |
+| Oman                                         | Asia          |
+| Pakistan                                     | Asia          |
+| Palau                                        | Oceania       |
+| Palestine                                    | Asia          |
+| Panama                                       | North America |
+| Papua New Guinea                             | Oceania       |
+| Paraguay                                     | South America |
+| Peru                                         | South America |
+| Philippines                                  | Asia          |
+| Pitcairn                                     | Oceania       |
+| Poland                                       | Europe        |
+| Portugal                                     | Europe        |
+| Puerto Rico                                  | North America |
+| Qatar                                        | Asia          |
+| Réunion                                      | Africa        |
+| Romania                                      | Europe        |
+| Russian Federation                           | Europe        |
+| Rwanda                                       | Africa        |
+| Saint Helena                                 | Africa        |
+| Saint Kitts and Nevis                        | North America |
+| Saint Lucia                                  | North America |
+| Saint Pierre and Miquelon                    | North America |
+| Saint Vincent and the Grenadines             | North America |
+| Samoa                                        | Oceania       |
+| San Marino                                   | Europe        |
+| Sao Tome and Principe                        | Africa        |
+| Saudi Arabia                                 | Asia          |
+| Senegal                                      | Africa        |
+| Seychelles                                   | Africa        |
+| Sierra Leone                                 | Africa        |
+| Singapore                                    | Asia          |
+| Slovakia                                     | Europe        |
+| Slovenia                                     | Europe        |
+| Solomon Islands                              | Oceania       |
+| Somalia                                      | Africa        |
+| South Africa                                 | Africa        |
+| South Georgia and the South Sandwich Islands | Antarctica    |
+| South Korea                                  | Asia          |
+| Spain                                        | Europe        |
+| Sri Lanka                                    | Asia          |
+| Sudan                                        | Africa        |
+| Suriname                                     | South America |
+| Svalbard and Jan Mayen                       | Europe        |
+| Swaziland                                    | Africa        |
+| Sweden                                       | Europe        |
+| Switzerland                                  | Europe        |
+| Syria                                        | Asia          |
+| Taiwan                                       | Asia          |
+| Tajikistan                                   | Asia          |
+| Tanzania                                     | Africa        |
+| Thailand                                     | Asia          |
+| The Democratic Republic of the Congo         | Africa        |
+| Togo                                         | Africa        |
+| Tokelau                                      | Oceania       |
+| Tonga                                        | Oceania       |
+| Trinidad and Tobago                          | North America |
+| Tunisia                                      | Africa        |
+| Turkey                                       | Asia          |
+| Turkmenistan                                 | Asia          |
+| Turks and Caicos Islands                     | North America |
+| Tuvalu                                       | Oceania       |
+| Uganda                                       | Africa        |
+| Ukraine                                      | Europe        |
+| United Arab Emirates                         | Asia          |
+| United Kingdom                               | Europe        |
+| United States                                | North America |
+| United States Minor Outlying Islands         | Oceania       |
+| Uruguay                                      | South America |
+| Uzbekistan                                   | Asia          |
+| Vanuatu                                      | Oceania       |
+| Venezuela                                    | South America |
+| Vietnam                                      | Asia          |
+| Virgin Islands, British                      | North America |
+| Virgin Islands, U.S.                         | North America |
+| Wallis and Futuna                            | Oceania       |
+| Western Sahara                               | Africa        |
+| Yemen                                        | Asia          |
+| Yugoslavia                                   | Europe        |
+| Zambia                                       | Africa        |
+| Zimbabwe                                     | Africa        |
++----------------------------------------------+---------------+
+239 rows in set (0.002 sec)
